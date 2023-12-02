@@ -55,7 +55,6 @@ with open(task_file) as f:
                 fewest_possible["blue"] =  max(fewest_possible["blue"], int(get_max_color(around,"b")))
 
             
-        if game_possible:
-            number_list.append(fewest_possible["red"]*fewest_possible["green"]*fewest_possible["blue"])
+        number_list.append(fewest_possible["red"]*fewest_possible["green"]*fewest_possible["blue"])
 
 print(f"Sum of all numbers is {sum(number_list)}")

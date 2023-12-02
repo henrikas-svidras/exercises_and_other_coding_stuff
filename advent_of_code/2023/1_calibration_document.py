@@ -1,7 +1,7 @@
 ## First task of advent of code
 
 import re
-task_file = "inputs/1_calibration_document.txt"
+task_file = "advent_of_code/2023/inputs/1_calibration_document.txt"
 
 def get_first_digit(text):
     return re.search(r"\d+?", text) 

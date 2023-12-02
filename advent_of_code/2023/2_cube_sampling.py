@@ -1,18 +1,11 @@
-## First task of advent of code
+## Second task of advent of code
 
 import re
 task_file = "advent_of_code/2023/inputs/2_cubes_sampling.txt"
 
-def get_max_red(text):
-    val = re.search(r"\d+ r", text) 
+def get_max_color(text, color):
+    val = re.search(rf"\d+ {color}", text) 
     return val.group()[:-2] if val is not None else 0
-def get_max_blue(text):
-    val = re.search(r"\d+ b", text) 
-    return val.group()[:-2]  if val is not None else 0
-def get_max_green(text):
-    val = re.search(r"\d+ g", text) 
-    return val.group()[:-2]  if val is not None else 0
-
 
 ## Part one
 
@@ -28,9 +21,9 @@ with open(task_file) as f:
 
         for nr, around in enumerate(rounds):
             if  (
-                (int(get_max_blue(around))>14) | 
-                (int(get_max_red(around))>12)  | 
-                (int(get_max_green(around))>13)
+                (int(get_max_color(around,"b"))>14) | 
+                (int(get_max_color(around,"r"))>12)  | 
+                (int(get_max_color(around,"g"))>13)
             ):
                 game_possible = False
                 break
@@ -57,9 +50,9 @@ with open(task_file) as f:
         rounds = game.split(";")
 
         for nr, around in enumerate(rounds): 
-                fewest_possible["red"] = max(fewest_possible["red"], int(get_max_red(around)))
-                fewest_possible["green"] = max(fewest_possible["green"], int(get_max_green(around)))
-                fewest_possible["blue"] =  max(fewest_possible["blue"], int(get_max_blue(around)))
+                fewest_possible["red"] = max(fewest_possible["red"], int(get_max_color(around,"r")))
+                fewest_possible["green"] = max(fewest_possible["green"], int(get_max_color(around,"g")))
+                fewest_possible["blue"] =  max(fewest_possible["blue"], int(get_max_color(around,"b")))
 
             
         if game_possible:

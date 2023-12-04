@@ -47,7 +47,6 @@ with open(task_file) as f:
 
         for match in range(1, len(lottery_nums.intersection(winning_nums))):
             cards_won[n+match+1] += (1*cards_won[n+1])
-        print(cards_won)
         
 
 print("Total cards collected from matched", sum(cards_won.values()))

@@ -37,16 +37,17 @@ cards_won = defaultdict(lambda: 1)
 with open(task_file) as f:
 
     for n, line in enumerate(f):
-        for n_duplicate in range(cards_won[n+1]):
-            lottery_nums, winning_nums  = line.replace("\n", "").split(":")[1].split("|")
-            lottery_nums = lottery_nums.split(" ")
-            winning_nums = winning_nums.split(" ")
+        cards_won[n+1] = cards_won[n+1] # stupid hack to add 1 card if there is none
+        lottery_nums, winning_nums  = line.replace("\n", "").split(":")[1].split("|")
+        lottery_nums = lottery_nums.split(" ")
+        winning_nums = winning_nums.split(" ")
 
-            lottery_nums = set(lottery_nums)
-            winning_nums = set(winning_nums)
+        lottery_nums = set(lottery_nums)
+        winning_nums = set(winning_nums)
 
-            for match in range(1, len(lottery_nums.intersection(winning_nums))):
-                cards_won[n+match+1] +=1
+        for match in range(1, len(lottery_nums.intersection(winning_nums))):
+            cards_won[n+match+1] += (1*cards_won[n+1])
+        print(cards_won)
         
 
 print("Total cards collected from matched", sum(cards_won.values()))

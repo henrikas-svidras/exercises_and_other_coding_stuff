@@ -13,7 +13,6 @@ with open(task_file) as f:
 # print(times)
 # print(distances)
 
-beats = False
 # wins = []
 wins_eqn = []
 for n, (time, distance) in enumerate(zip(times, distances)):
@@ -45,7 +44,6 @@ with open(task_file) as f:
 # print(times)
 # print(distances)
 
-beats = False
 # wins = []
 wins_eqn = []
 

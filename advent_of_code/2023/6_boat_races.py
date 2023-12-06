@@ -1,6 +1,5 @@
 ## 6th task of advent of code
 import numpy as np
-from tqdm import tqdm
 task_file = "advent_of_code/2023/inputs/6_task.txt"
 
 
@@ -19,7 +18,7 @@ wins = []
 
 for n, (time, distance) in enumerate(zip(times, distances)):
     wins.append(0)
-    for hold_time in tqdm(range(1, time)):
+    for hold_time in range(1, time):
         left_time = time - hold_time
         speed = hold_time
         new_distance = speed * left_time

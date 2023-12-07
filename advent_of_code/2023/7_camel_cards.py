@@ -79,7 +79,6 @@ with open(task_file) as f:
 print(sum([int(cards_set.bid)*(n+1) for n, cards_set in enumerate(sorted(cards))]))
 
 # Part two 
-
 with open(task_file) as f:
     lines = [line.replace("\n","") for line in f]
     cards = [CardHand(line.split(" ")[0], line.split(" ")[1], is_j_joker=True) for line in lines]

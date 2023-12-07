@@ -2,8 +2,6 @@
 
 task_file = "advent_of_code/2023/inputs/7_task.txt"
 
-## Part 1
-
 class CardHand:
     def __init__(self, hand, bid, is_j_joker=False):
         if not is_j_joker:
@@ -73,7 +71,7 @@ class CardHand:
                 elif self.rank_order[i] < other.rank_order[i]:
                     return False
             return False
-
+## Part one
 with open(task_file) as f:
     lines = [line.replace("\n","") for line in f]
     cards = [CardHand(line.split(" ")[0], line.split(" ")[1]) for line in lines]

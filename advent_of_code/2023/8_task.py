@@ -31,7 +31,7 @@ results = []
 for current_key in last_keys:
     last_key = current_key
     while last_key[2]!="Z":
-        for direction in pattern:
+        for n, direction in enumerate(pattern):
             steps+=1
             if direction=="L":
                 last_key = nodes[last_key][0]
@@ -50,9 +50,11 @@ for current_key in last_keys:
                 # and you will keep hitting the same pattern every N_i number of times (periods)
                 # So everything is just a pendulum and it will be in sync after
                 # least common multiplier (LCM) of cycles.
-                # Uncomment the bottom line to see the pattern:
-                #print(f"Start: {current_key}, {nodes[current_key]}")
-                #print(f"End: {last_key}, {nodes[last_key]}")
+                # But it also will only work if every path is completed after len(steps). 
+                # Anyway turned out true but like yeah.
+                # Uncomment the bottom line to see the patterns:
+                print(f"Start: {current_key}, {nodes[current_key]} ", print((n+1)==len(pattern)))
+                print(f"End: {last_key}, {nodes[last_key]} ", print((n+1)==len(pattern)))
                 break
 
 print("Would be done in ", lcm(*results), " steps")

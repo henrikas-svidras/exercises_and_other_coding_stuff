@@ -30,7 +30,7 @@ steps = 0
 results = []
 for current_key in last_keys:
     last_key = current_key
-    while True:
+    while last_key[2]!="Z":
         for direction in pattern:
             steps+=1
             if direction=="L":
@@ -53,8 +53,6 @@ for current_key in last_keys:
                 # Uncomment the bottom line to see the pattern:
                 #print(f"Start: {current_key}, {nodes[current_key]}")
                 #print(f"End: {last_key}, {nodes[last_key]}")
-                break
-        if last_key[2]=="Z":
                 break
 
 print("Would be done in ", lcm(*results), " steps")

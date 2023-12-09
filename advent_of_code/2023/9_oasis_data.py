@@ -1,9 +1,9 @@
 ## 9th task of advent of code
 import numpy as np
-task_file = "advent_of_code/2023/inputs/9_task.txt"
+from utils.inputs import get_data_set
 
-with open(task_file) as f:
-    lines = [line.replace("\n","").split(" ") for line in f]
+lines = get_data_set(2023, 9)
+lines = [line.split(" ") for line in lines]
 
 summable_vals1 = []
 summable_vals2 = []

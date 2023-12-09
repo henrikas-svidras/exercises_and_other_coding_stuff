@@ -53,8 +53,8 @@ for current_key in last_keys:
                 # But it also will only work if every path is completed after len(steps). 
                 # Anyway turned out true but like yeah.
                 # Uncomment the bottom line to see the patterns:
-                print(f"Start: {current_key}, {nodes[current_key]} ", print((n+1)==len(pattern)))
-                print(f"End: {last_key}, {nodes[last_key]} ", print((n+1)==len(pattern)))
+                #print(f"Start: {current_key}, {nodes[current_key]} ", print((n+1)==len(pattern)))
+                #print(f"End: {last_key}, {nodes[last_key]} ", print((n+1)==len(pattern)))
                 break
 
 print("Would be done in ", lcm(*results), " steps")

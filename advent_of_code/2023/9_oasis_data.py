@@ -1,6 +1,6 @@
 ## 9th task of advent of code
 import numpy as np
-from utils.inputs import get_data_set
+from utils.inputs import get_data_set, get_test_data_set
 
 lines = get_data_set(2023, 9)
 lines = [line.split(" ") for line in lines]

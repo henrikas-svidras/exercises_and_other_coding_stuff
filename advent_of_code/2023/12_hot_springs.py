@@ -75,7 +75,7 @@ print(f"Counter for part 1 is {counter_total1}")
 print(f"Counter for part 2 is {counter_total2}")
 
 
-## Original code for part 1 was really terribly optimised lol
+## Original code for part 1 was really terribly optimised lol but it got me rank 1249
 # from itertools import combinations
 # import re 
 

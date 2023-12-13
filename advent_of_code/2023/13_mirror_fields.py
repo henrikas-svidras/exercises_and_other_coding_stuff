@@ -31,16 +31,6 @@ def transpose_string_list(string_list):
     transposed = [''.join(row) for row in zip(*string_list)]
     return transposed
 
-def replace_character(string_list, row, col, new_char):
-    # Ensure the row and column are within the bounds of the list
-    if row < 0 or row >= len(string_list) or col < 0 or col >= len(string_list[row]):
-        raise ValueError("Row or column out of bounds")
-
-    # Replace the character
-    string_list[row] = string_list[row][:col] + new_char + string_list[row][col + 1:]
-
-    return string_list
-
 res1 = 0
 res2 = 0
 

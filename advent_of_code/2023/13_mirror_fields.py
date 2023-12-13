@@ -3,8 +3,6 @@ from utils.inputs import get_data_set, get_test_data_set
 
 data = get_data_set(2023,13)+[""]
 
-twoD_pattern = []
-
 def search_for_axis_of_symmetry(pattern, smudge_amount=0):
     rows = len(pattern)
     for row in range(rows - 1):
@@ -24,9 +22,7 @@ def search_for_axis_of_symmetry(pattern, smudge_amount=0):
 
     else:
         return False
-   
-
-    
+  
 def transpose_string_list(string_list):
     transposed = [''.join(row) for row in zip(*string_list)]
     return transposed
@@ -34,11 +30,13 @@ def transpose_string_list(string_list):
 res1 = 0
 res2 = 0
 
+twoD_pattern = []
 for line in data:
     if len(line):
         twoD_pattern += [line]      
     else:
         transposed_string = transpose_string_list(twoD_pattern)
+        
         val = search_for_axis_of_symmetry(twoD_pattern)
         if val:
             res1 +=val*100
@@ -53,6 +51,7 @@ for line in data:
 
 print(res1)
 
+## Part 2 (just add smudge amount to seach for axis funcnc)
 twoD_pattern = []
 for line in data:
     if len(line):

@@ -1,7 +1,5 @@
 ## 12th task of advent of code
 from utils.inputs import get_data_set, get_test_data_set
-import numpy as np
-from tqdm import tqdm
 
 data = get_data_set(2023,13)+[""]
 
@@ -27,22 +25,7 @@ def search_for_axis_of_symmetry(pattern, smudge_amount=0):
     else:
         return False
    
-# def search_for_axis_of_symmetry_around_current_row(pattern):
-#     rows = len(pattern)
-#     for row in range(1, rows - 1):
-#         before = pattern[:row]
-#         after = pattern[row + 1:]
 
-#         min_len = min(len(before), len(after))
-
-#         # Comparing the last elements of 'before' with the first elements of 'after'
-#         compare_before = before[-min_len:]
-#         compare_after = after[:min_len]
-
-#         if compare_before == compare_after[::-1]:
-#             return row+1
-#     else:
-#         return False
     
 def transpose_string_list(string_list):
     transposed = [''.join(row) for row in zip(*string_list)]
@@ -101,3 +84,20 @@ for line in data:
 
 print(res2)
 
+# I wrote this for part 1 because I thought symmetry axis can coincide with a column.
+# def search_for_axis_of_symmetry_around_current_row(pattern):
+#     rows = len(pattern)
+#     for row in range(1, rows - 1):
+#         before = pattern[:row]
+#         after = pattern[row + 1:]
+
+#         min_len = min(len(before), len(after))
+
+#         # Comparing the last elements of 'before' with the first elements of 'after'
+#         compare_before = before[-min_len:]
+#         compare_after = after[:min_len]
+
+#         if compare_before == compare_after[::-1]:
+#             return row+1
+#     else:
+#         return False

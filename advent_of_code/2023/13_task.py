@@ -15,13 +15,12 @@ def search_for_axis_of_symmetry(pattern, smudge_amount=0):
 
         min_len = min(len(before), len(after))
 
-        # Comparing the last elements of 'before' with the first elements of 'after'
         compare_before = before[-min_len:]
         compare_after = after[:min_len]
 
         if smudge_amount==0 and (compare_before == compare_after[::-1]):
             return row+1
-
+        #added in part 2
         elif smudge_amount>0 and sum(symbol1!=symbol2 for part1, part2 in zip(compare_before, compare_after[::-1]) for symbol1, symbol2 in zip(part1, part2))==smudge_amount:
             return row + 1
 

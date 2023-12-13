@@ -1,4 +1,4 @@
-## 12th task of advent of code
+## 13th task of advent of code
 from utils.inputs import get_data_set, get_test_data_set
 
 data = get_data_set(2023,13)+[""]
@@ -36,7 +36,7 @@ for line in data:
         twoD_pattern += [line]      
     else:
         transposed_string = transpose_string_list(twoD_pattern)
-        
+
         val = search_for_axis_of_symmetry(twoD_pattern)
         if val:
             res1 +=val*100

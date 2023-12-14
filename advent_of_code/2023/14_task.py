@@ -9,12 +9,10 @@ def push_north(grid):
     rows = len(grid)
     cols = len(grid[0])
 
-    # Convert each row to a list for mutability
     movement_happened = False
     for col in range(cols):
         for row in range(rows - 1):
             if grid[row][col] == '.' and grid[row + 1][col] == 'O':
-                # Swap the elements
                 grid[row][col], grid[row + 1][col] = grid[row + 1][col], grid[row][col]
                 movement_happened = True
 

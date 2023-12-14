@@ -16,7 +16,6 @@ def push_north(grid):
                 grid[row][col], grid[row + 1][col] = grid[row + 1][col], grid[row][col]
                 movement_happened = True
 
-    # Convert each row back to a string
     return grid, movement_happened
 
 def calc_load(grid):

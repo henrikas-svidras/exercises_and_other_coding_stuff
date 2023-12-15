@@ -52,10 +52,9 @@ for n, word in enumerate(data):
             del boxes[label]
     
 hashsum = 0
-slots = [[0]]*256
+slots = [0]*256
 for n, key in enumerate(boxes):
     slots[boxes[key][0]] += 1
-
     hashsum += (boxes[key][0]+1) * slots[boxes[key][0]] * boxes[key][1]
 
 print(hashsum)

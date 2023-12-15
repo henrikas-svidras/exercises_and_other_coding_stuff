@@ -1,6 +1,5 @@
 ## 15th task of advent of code
 from utils.inputs import get_data_set, get_test_data_set
-from collections import defaultdict
 
 data = get_data_set(2023,15)[0]
 
@@ -9,8 +8,6 @@ data = data.split(",")
 ## Part 1 
 
 hashsum = 0
-
-dict = {}
 
 for word in data:
     curr_val = 0
@@ -27,8 +24,6 @@ print(hashsum)
 ## Part 2
 
 boxes = {}
-
-box_counters = defaultdict(lambda: 0)
 
 for n, word in enumerate(data):
     curr_val = 0

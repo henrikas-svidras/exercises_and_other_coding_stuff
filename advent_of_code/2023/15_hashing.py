@@ -14,6 +14,7 @@ dict = {}
 
 for word in data:
     curr_val = 0
+    # Calc hash
     for symb in word:
         curr_val += ord(symb)
         curr_val *= 17
@@ -31,7 +32,7 @@ box_counters = defaultdict(lambda: 0)
 
 for n, word in enumerate(data):
     curr_val = 0
-    
+    # Process input
     if "=" in word:
         label, num = word.split("=")
         op = "="
@@ -39,20 +40,19 @@ for n, word in enumerate(data):
     else:
         label = word[:-1]
         op = "-"
-
+    # Calc hash
     for symb in label:
         curr_val += ord(symb)
         curr_val *= 17
         curr_val = curr_val % 256
 
-    if  op == "=":
+    if op == "=":
         boxes[label] = [curr_val, num]
-    else:
-        if label in boxes:
+    elif label in boxes:
             del boxes[label]
     
 hashsum = 0
-slots = defaultdict(lambda:0)
+slots = [[0]]*256
 for n, key in enumerate(boxes):
     slots[boxes[key][0]] += 1
 

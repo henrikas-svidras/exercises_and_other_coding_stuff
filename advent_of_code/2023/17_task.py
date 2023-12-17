@@ -9,13 +9,13 @@ data = [[int(cell) for cell in row] for row in data]
 directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 rows, cols = len(data), len(data[0])
 
-def is_wrong_direction(current_dir, disallowed_dir):
-    if current_dir == disallowed_dir:
+def is_wrong_direction(current_dir, last_direction):
+    if current_dir == last_direction:
         return True
     if current_dir in [0, 1]:  # Up or Down
-        return disallowed_dir in [0, 1] 
+        return last_direction in [0, 1] 
     elif current_dir in [2, 3]:  # Left or Right
-        return disallowed_dir in [2, 3]
+        return last_direction in [2, 3]
 
 def dijkstra(grid, start, end, min_steps, max_steps):
     queue = [(0, start, -1)] # current distance, coords, last direction

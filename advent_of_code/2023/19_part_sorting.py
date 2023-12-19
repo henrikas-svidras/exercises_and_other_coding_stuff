@@ -1,7 +1,6 @@
 ## 19th task of advent of code
 from utils.inputs import get_data_set, get_test_data_set
 import time
-from collections import defaultdict
 
 data = get_data_set(2023,19)
 
@@ -43,9 +42,9 @@ def get_combinations_in_phase_space(workflows, workflow_name, phase_space):
             count *= len(a)
         return count
 
-    entry = workflows[workflow_name]
+    workflow = workflows[workflow_name]
 
-    for (next_workflow, rule) in entry:
+    for (next_workflow, rule) in workflow:
         if rule == "True" or rule=="False":
             # this means we are defaulting in the workflow
             return count + get_combinations_in_phase_space(workflows, next_workflow, phase_space)
@@ -63,7 +62,6 @@ def get_combinations_in_phase_space(workflows, workflow_name, phase_space):
             phase_space[index] = [subrange for subrange in phase_space[index] if not check(subrange)]
 
             count += get_combinations_in_phase_space(workflows, next_workflow, unchecked_space)
-    return count
 
 ## Parsing
 

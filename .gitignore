@@ -1,3 +1,4 @@
 advent_of_code/*/inputs
 advent_of_code/.env
 advent_of_code/*/utils/__pycache__
+advent_of_code/*/test_notebook.ipynb

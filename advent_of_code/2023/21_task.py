@@ -42,40 +42,39 @@ def part1(start_x, start_y, steps=64):
         current_positions = set(next_positions.copy())
     return current_positions
 
-
-def available_steps_periodic(x, y, visited):
+@cache
+def available_steps_periodic(x, y):
     grid = data
-    rows = len(grid)
-    cols = len(grid[0])
     steps = []
 
     # Directions: North, South, East, West
     for dx, dy in [(-1, 0), (1, 0), (0, 1), (0, -1)]:
         # Use modular arithmetic to wrap around
-        new_x = (x + dx) % rows
-        new_y = (y + dy) % cols
+        new_x = (x + dx) % nrows
+        new_y = (y + dy) % ncols
 
-        if (new_x, new_y) not in visited and grid[new_x][new_y] == '.':
-            steps.append((new_x, new_y))
+        if grid[new_x][new_y] != '#':
+            steps.append((x+dx, y+dy))
 
     return steps
 
-def part2(start_x, start_y, steps=26501365):
+import numpy as np
+def part2(start_x, start_y, steps=500):
     current_positions = [(start_x, start_y)]
-    all_steps = []
-    visited = set(current_positions)
-
+    counts = []
     for _ in range(steps):
-        next_positions = []
-        for x, y in current_positions:
-            for new_position in available_steps_periodic(x, y, visited):
-                if new_position not in visited:
-                    next_positions.append(new_position)
-                    visited.add(new_position)
-        all_steps.append(next_positions)
-        current_positions = next_positions
+        next_positions = set(current_positions)
+        current_positions = set()
+        for x, y in next_positions:
+            for new_position in available_steps_periodic(x, y):
+                current_positions.add(new_position)
+        next_positions = current_positions
+        counts.append(len(current_positions))
 
-    return all_steps
+    pars = np.polyfit(np.arange(0, 500)[64::131][:3], counts[64::131][:3], deg=2)
+
+    return pars[0]*26501364**2 + pars[1]*26501364 + pars[2]
+
 
 start = time.time()
 
@@ -85,4 +84,4 @@ print(len(res1))
 
 res2 = part2(start_x, start_y)
 print(f"{(time.time() - start):.2f}s")
-print(len(res1))
+print(np.floor(res2))

@@ -12,11 +12,6 @@ class Rectangle:
         self.lowest_z = lowest_z
     
     def fall_step(self):
-        self.xyz = [(x, y, z-1) for x, y, z in self.xyz]
-        self.lowest_z-=1
-        return self
-    
-    def fall_step(self):
         return Rectangle(self.name, [(x,y,z-1) for x,y,z in self.xyz], self.lowest_z-1)
     
     def can_fall(self, occupied):

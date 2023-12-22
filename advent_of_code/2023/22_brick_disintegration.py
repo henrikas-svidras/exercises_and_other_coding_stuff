@@ -72,7 +72,7 @@ for i in range(len(bricks)):
     fallen_bricks_without_one = let_it_fall(bricks_without_one)
     not_falling = []
     for name, brick in fallen_bricks_without_one.items():
-        not_falling.append(int(brick.lowest_z == fallen_bricks[name].lowest_z))
+        not_falling.append(brick.lowest_z == fallen_bricks[name].lowest_z)
 
     res1 += all(not_falling)
     res2 += sum([not val for val in not_falling])

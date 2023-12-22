@@ -22,7 +22,7 @@ class Rectangle:
     def can_fall(self, occupied):
         return self.lowest_z > 1 and not any((x, y, z-1) in occupied for x, y, z in self.xyz)
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return f"Rect: {self.name}, {self.lowest_z}, {self.xyz}"
 
 def let_it_fall(bricks):

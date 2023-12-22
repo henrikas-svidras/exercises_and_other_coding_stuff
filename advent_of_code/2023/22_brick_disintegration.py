@@ -59,7 +59,7 @@ sorted_bricks = sorted(bricks, key=lambda b: b.lowest_z)
 
 print(f"Time to sort {time.time() - start:.2f} s")
 
-relaxed_bricks = let_it_fall(sorted_bricks)
+fallen_bricks = let_it_fall(sorted_bricks)
 
 print(f"Time to drop {time.time() - start:.2f} s")
 
@@ -68,11 +68,11 @@ res1 = 0
 res2 = 0
 
 for i in range(len(bricks)):
-    bricks_without_one = [brick for n, brick in enumerate(relaxed_bricks.values()) if n!=i]
-    temp = let_it_fall(bricks_without_one)
+    bricks_without_one = [brick for n, brick in enumerate(fallen_bricks.values()) if n!=i]
+    fallen_bricks_without_one = let_it_fall(bricks_without_one)
     not_falling = []
-    for name, brick in temp.items():
-        not_falling.append(int(brick.lowest_z == relaxed_bricks[name].lowest_z))
+    for name, brick in fallen_bricks_without_one.items():
+        not_falling.append(int(brick.lowest_z == fallen_bricks[name].lowest_z))
 
     res1 += all(not_falling)
     res2 += sum([not val for val in not_falling])

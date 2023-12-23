@@ -1,6 +1,5 @@
 ## 23rd task of advent of code
 from utils.inputs import get_data_set, get_test_data_set
-from heapq import heappop, heappush
 import time
 
 data = get_data_set(2023,23)
@@ -15,7 +14,7 @@ def search_for_longest_with_slide(grid, start, end):
     it = 0
     while queue:
         it+=1
-        _, (y, x), path = heappop(queue)
+        _, (y, x), path = queue.pop()
 
         if (y, x) == end:
             if len(path) > current_max:
@@ -31,7 +30,7 @@ def search_for_longest_with_slide(grid, start, end):
                     continue
                 elif grid[y][x] ==  "v" and not (dx==0 and dy==1):
                     continue
-                heappush(queue,(len(path)*-1, (ny, nx), path + [(y, x)]))
+                queue.append((len(path)*-1, (ny, nx), path + [(y, x)]))
 
     return current_max
 

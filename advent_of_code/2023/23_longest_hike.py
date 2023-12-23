@@ -9,8 +9,6 @@ directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 rows, cols = len(data), len(data[0])
 
 def search_for_longest_with_slide(grid, start, end):
-    rows, cols = len(grid), len(grid[0])
-    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
     queue = [(0, start, [])]
     current_max = 0
 
@@ -92,8 +90,8 @@ def search_for_longest_path(distances, silent=True):
 
 
 
-start = (0, 1) # top-left corner
-end = (rows-1, cols-2) # top-left corner
+start = (0, 1)
+end = (rows-1, cols-2)
 
 ## Part 1 
 
@@ -109,16 +107,12 @@ print("Part 1 answer: ", res1)
 start_time = time.time()
 
 nodes = find_nodes(data, start, end)
-
 print(f"Found nodes: {(time.time() - start_time):.2f}s")
 
-
 distances = build_distances(nodes)
-
 print(f"Found distances: {(time.time() - start_time):.2f}s")
 
 res2 = search_for_longest_path(distances, silent=False)
-
 print(f"Sought for paths: {(time.time() - start_time):.2f}s")
 
 print("Part 2 answer: ", res2)

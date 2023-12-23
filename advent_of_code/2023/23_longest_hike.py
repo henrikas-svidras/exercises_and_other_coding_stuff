@@ -11,9 +11,7 @@ def search_for_longest_with_slide(grid, start, end):
     queue = [(0, start, [])]
     current_max = 0
 
-    it = 0
     while queue:
-        it+=1
         _, (y, x), path = queue.pop()
 
         if (y, x) == end:

@@ -85,12 +85,12 @@ print("Part 1 answer: ", res1)
 
 def equations(p, *vals):
     x, y, z = p[0:3]
-    vx, vy, vz = p[3:]
+    v_x, v_y, v_z = p[3:]
     
     res = []
-    for ((x1,y1,z1),(v1x,v1y,v1z)) in zip(positions[vals[0]:vals[1]], velocities[vals[0]:vals[1]]):
-        res.append((x-x1)*(vy-v1y) - (y-y1)*(vx-v1x))
-        res.append((x-x1)*(vz-v1z) - (z-z1)*(vx-v1x))
+    for ((x1, y1, z1),(v1_x, v1_y, v1_z)) in zip(positions[vals[0]:vals[1]], velocities[vals[0]:vals[1]]):
+        res.append((x - x1) * (v_y - v1_y) - (y - y1) * (v_x - v1_x))
+        res.append((x - x1) * (v_z - v1_z) - (z - z1) * (v_x - v1_x))
     return res
 
 def part2(positions, velocities):

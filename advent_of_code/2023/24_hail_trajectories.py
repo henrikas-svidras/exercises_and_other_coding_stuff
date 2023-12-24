@@ -7,6 +7,21 @@ import collections
 
 data = get_data_set(2023,24)
 
+## Parse data
+
+positions = []
+velocities = []
+
+for line in data:
+    split = line.split("@")
+    position = split[0].split(", ")
+    velocity = split[1].split(", ")
+    positions.append([int(val) for val in position])
+    velocities.append([int(val) for val in velocity])
+
+
+## Part 1 
+    
 def will_pass_through_same_point(x1, y1, v1_x, v1_y, x2, y2, v2_x, v2_y, lims):
     
     if (x1, y1) == (x2, y2):
@@ -57,20 +72,6 @@ def part1(positions, velocities):
     
     return sum(cross)
 
-# Parse data
-
-positions = []
-velocities = []
-
-for line in data:
-    split = line.split("@")
-    position = split[0].split(", ")
-    velocity = split[1].split(", ")
-    positions.append([int(val) for val in position])
-    velocities.append([int(val) for val in velocity])
-
-
-## Part 1 
 start_time = time.time()
 
 res1 = part1(positions, velocities)

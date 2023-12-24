@@ -5,8 +5,7 @@ from itertools import combinations
 from scipy.optimize import fsolve
 import collections
 
-
-data = get_test_data_set(2023,24)
+data = get_data_set(2023,24)
 
 def will_pass_through_same_point(x1, y1, v1_x, v1_y, x2, y2, v2_x, v2_y, lims = (200000000000000, 400000000000000)):
     # Check if the velocities are zero (stationary particles)
@@ -106,6 +105,7 @@ start_time = time.time()
 
 results = part2(positions, velocities)
 print(results)
+print(collections.Counter(results).items())
 print([item for item, count in collections.Counter(results).items() if count > 1])
 print(collections.Counter(results).most_common()[0][0])
 

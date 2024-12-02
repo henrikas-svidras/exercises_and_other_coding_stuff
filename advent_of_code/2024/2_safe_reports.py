@@ -2,8 +2,6 @@
 from utils.inputs import get_data_set, get_test_data_set
 import time
 import numpy as np
-from collections import Counter
-from functools import cache
 
 data = get_data_set(2024,2)
 print(data[0])

@@ -9,13 +9,13 @@ def process_data(data=data, check_for_disable=False):
     output = 0
     skip = False
     for dat in skimmed_data:
-        val1, val2, do, dont = dat[0],dat[1],dat[2],dat[3]
+        val1, val2, dont, do = dat[0],dat[1],dat[2],dat[3]
         if not check_for_disable:
             output += int(val1)*int(val2) if val1 else 0
         elif check_for_disable:
-            if dat[2]:
+            if dont:
                 skip = True
-            elif dat[3]:
+            elif do:
                 skip = False
             output += int(val1)*int(val2) if (val1 and not skip) else 0
  

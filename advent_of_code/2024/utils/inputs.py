@@ -6,13 +6,18 @@ inputs_dir = os.path.dirname(os.path.dirname(file_path)) + "/inputs"
 def is_data_present(path):
     return os.path.exists(path)
 
-def get_data_set(year, day):
+def get_data_set(year, day, raw=False):
     path = inputs_dir+f"/{day}_task.txt"
     if is_data_present(path):
         print("Downloaded already. Loading...")
-        with open(path) as f:
-            lines = [line.replace("\n","") for line in f]
-        return lines
+        if not raw:
+            with open(path) as f:
+                lines = [line.replace("\n","") for line in f]
+            return lines
+        else:
+            with open(path) as f:
+                lines = f.read()
+            return lines
     else:        
         import urllib.request
 
@@ -27,13 +32,19 @@ def get_data_set(year, day):
             f.write(page)
         return get_data_set(year, day)
 
-def get_test_data_set(year, day):
+def get_test_data_set(year, day, raw=False):
     path = inputs_dir+f"/{day}_task_test.txt"
     if is_data_present(path):
         print("Downloaded already. Loading test data...")
-        with open(path) as f:
-            lines = [line.replace("\n","") for line in f]
-        return lines
+        if not raw:
+            with open(path) as f:
+                lines = [line.replace("\n","") for line in f]
+            return lines
+        else:
+            with open(path) as f:
+                lines = f.read()
+            return lines
+
     else:        
         import urllib.request
         import re

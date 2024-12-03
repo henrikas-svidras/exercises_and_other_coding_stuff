@@ -5,10 +5,10 @@ import re
 data = get_data_set(2024,3, raw=True)
 
 def process_data(data=data, check_for_disable=False):
-    test_data = re.findall(r'mul\((\d+),(\d+)\)|(don\'t\(\))|(do\(\))',data)
+    skimmed_data = re.findall(r'mul\((\d+),(\d+)\)|(don\'t\(\))|(do\(\))',data)
     output = 0
     skip = False
-    for dat in test_data:
+    for dat in skimmed_data:
         val1, val2, do, dont = dat[0],dat[1],dat[2],dat[3]
         if not check_for_disable:
             output += int(val1)*int(val2) if val1 else 0

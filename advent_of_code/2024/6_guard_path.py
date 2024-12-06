@@ -62,8 +62,6 @@ def part2(inp, past_pos):
         coord = start_coord
         current_dir = start_dir
         seen = defaultdict(lambda:[])
-        loop = False
-        out = False
         while True:
             if coord in seen and current_dir in seen[coord]:
                 counter+=1

@@ -85,9 +85,9 @@ def part2(inp, past_pos):
 start = time.time()
 
 res1, path = part1(processed_data)
-print(f"Part 12 took: {(time.time() - start):.2f}s")
+print(f"Part 1 took: {(time.time() - start):.2f}s")
 print(f"Result of part 1: {res1} ")
 
 res2 = part2(processed_data, path)
-print(f"Part 12 took: {(time.time() - start):.2f}s")
+print(f"Part 2 took: {(time.time() - start):.2f}s")
 print(f"Result of part 2: {res2} ")

@@ -73,7 +73,6 @@ def part2(inp, past_pos):
                 next_char = inp[coord+current_dir]
                 
             if next_char == "o":
-                inp[key] = "."
                 break
             
             coord += current_dir

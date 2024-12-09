@@ -33,8 +33,8 @@ def process_data(data=data):
 
 def part1(inp):
     _,_, layout = inp    
-    updated_layout = layout
-    for val in reversed(layout):
+    updated_layout = layout.copy()
+    for _ in layout:
         if None in updated_layout:
             spot = updated_layout.index(None)
         else:
@@ -65,8 +65,8 @@ inp = process_data()
 res1 = part1(inp)
 print(f"Part 1 took: {(time.time() - start):.2f}s")
 print(f"Result of part 1: {res1}")
-inp = process_data()
 
+start = time.time()
 res2 = part2(inp)
 print(f"Part 2 took: {(time.time() - start):.2f}s")
 print(f"Result of part 2: {res2}")

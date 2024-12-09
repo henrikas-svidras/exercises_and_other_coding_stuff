@@ -47,7 +47,6 @@ def part1(inp):
         else:
             break
 
-    print(updated_layout)
     return sum(n * val for n, val in enumerate(updated_layout) if val)
 
 

@@ -5,7 +5,7 @@ import time
 data = get_data_set(2024,9)
 
 
-def process_data(data=data, for_part_1=True):
+def process_data(data=data):
 
     fil = 0  
     pos = 0    
@@ -18,11 +18,8 @@ def process_data(data=data, for_part_1=True):
     for i, char in enumerate(data[0]):
         mem_size = int(char)
         if i % 2 == 0: 
-            if not for_part_1:
-                file_map.append((pos, mem_size, fil))
+            file_map.append((pos, mem_size, fil))
             for _ in range(mem_size):
-                if for_part_1:
-                    file_map.append((pos, 1, fil))
                 pos += 1
                 layout.append(fil)
             fil += 1
@@ -31,16 +28,24 @@ def process_data(data=data, for_part_1=True):
             layout += [None] * mem_size
             pos += mem_size
 
-    # print(file_map)
-    # print(empty_space)
-    # print(layout)
-    # print("---")
     return file_map, empty_space, layout
 
-inp1 = process_data()
-inp2 = process_data(for_part_1=False)
 
 def part1(inp):
+    _,_, layout = inp    
+    updated_layout = layout
+    for val in reversed(layout):
+        if None in updated_layout:
+            spot = updated_layout.index(None)
+        else:
+            break
+        updated_layout[spot] = updated_layout.pop(-1)
+        
+    return sum(n * val for n, val in enumerate(updated_layout) if val)
+
+
+def part2(inp):
+
     file_map, free_spaces,layout = inp    
     
     for pos, size, file_id in reversed(file_map):
@@ -54,17 +59,14 @@ def part1(inp):
                 break
 
     return sum(n * val for n, val in enumerate(layout) if val)
-
-def part2(inp):
-
-    return part1(inp)
-
 start = time.time()
 
-res1 = part1(inp1)
+inp = process_data()
+res1 = part1(inp)
 print(f"Part 1 took: {(time.time() - start):.2f}s")
 print(f"Result of part 1: {res1}")
+inp = process_data()
 
-res2 = part2(inp2)
+res2 = part2(inp)
 print(f"Part 2 took: {(time.time() - start):.2f}s")
 print(f"Result of part 2: {res2}")

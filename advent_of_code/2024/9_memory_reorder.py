@@ -2,7 +2,7 @@
 from utils.inputs import get_data_set, get_test_data_set
 import time
 
-data = get_data_set(2024,9)
+data = get_test_data_set(2024,9)
 
 
 def process_data(data=data):
@@ -28,6 +28,9 @@ def process_data(data=data):
             layout += [None] * mem_size
             pos += mem_size
 
+    print(file_map),
+    print(empty_space)
+    print(layout)
     return file_map, empty_space, layout
 
 

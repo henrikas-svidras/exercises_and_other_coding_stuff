@@ -28,9 +28,9 @@ def process_data(data=data):
             layout += [None] * mem_size
             pos += mem_size
 
-    print(file_map),
-    print(empty_space)
-    print(layout)
+    # print(file_map),
+    # print(empty_space)
+    # print(layout)
     return file_map, empty_space, layout
 
 

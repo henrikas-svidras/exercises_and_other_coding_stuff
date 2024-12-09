@@ -3,8 +3,6 @@ from utils.inputs import get_data_set, get_test_data_set
 import time
 
 data = get_data_set(2024,9)
-#data = open("/home/henrikas/Desktop/Coding/excercises_and_other_coding_stuff/advent_of_code/2024/inputs/9_task_lukas.txt").read().split()
-# data = ["963614854278798959266987"]
 def process_data(data=data):
 
     fil = 0  

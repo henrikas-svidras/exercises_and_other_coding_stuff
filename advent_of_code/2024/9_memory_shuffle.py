@@ -2,9 +2,9 @@
 from utils.inputs import get_data_set, get_test_data_set
 import time
 
-data = get_test_data_set(2024,9)
-
-
+data = get_data_set(2024,9)
+#data = open("/home/henrikas/Desktop/Coding/excercises_and_other_coding_stuff/advent_of_code/2024/inputs/9_task_lukas.txt").read().split()
+# data = ["963614854278798959266987"]
 def process_data(data=data):
 
     fil = 0  
@@ -13,7 +13,7 @@ def process_data(data=data):
     file_map = []
     empty_space = [] 
     layout = []     
-  
+    
 
     for i, char in enumerate(data[0]):
         mem_size = int(char)
@@ -36,14 +36,20 @@ def process_data(data=data):
 
 def part1(inp):
     _,_, layout = inp    
+    print(layout)
     updated_layout = layout.copy()
     for _ in layout:
         if None in updated_layout:
             spot = updated_layout.index(None)
         else:
             break
-        updated_layout[spot] = updated_layout.pop(-1)
-        
+        val = updated_layout.pop(-1)
+        if None in updated_layout: # this whole if else can be removed but some edge cases wont work
+            updated_layout[spot] = val
+        else:
+            break
+
+    print(updated_layout)
     return sum(n * val for n, val in enumerate(updated_layout) if val)
 
 

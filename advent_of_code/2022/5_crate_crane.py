@@ -8,11 +8,6 @@ print(data[0])
 print(data[1])
 print(data[2])
 
-# data = [
-# "4-24,2-4"
-# ]
-
-
 def process_data(data=data):
     crates = defaultdict(lambda:deque())
     instructions = []

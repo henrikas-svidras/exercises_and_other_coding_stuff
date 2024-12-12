@@ -30,9 +30,10 @@ inp = process_data()
 def analyze_region(start, seen, full_grid):
     plant = full_grid[start]
     plants_in_perimeter = [start]
+   
     perimeter = set()
     checked_area = set()
-    corners = 0
+   
     for pos in plants_in_perimeter:
         checked_area.add(pos)
         for direction in DIRS_COMPLEX[:4]:
@@ -48,8 +49,8 @@ def analyze_region(start, seen, full_grid):
     return plants_in_perimeter, perimeter
 
 def count_sides(perimeter):
-    checked_perimeter = set()
     side_count = 0
+    checked_perimeter = set()
     for per_pos, check_dir in perimeter:
         if (per_pos, check_dir) in checked_perimeter:
             continue

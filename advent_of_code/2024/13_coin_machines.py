@@ -21,7 +21,7 @@ inp = process_data()
 def build_and_solve_equation(coeffs):
 
     eqs = z3.Solver()
-    n_a, n_b = z3.Ints("times_a times_b")
+    n_a, n_b = z3.Ints("n_a n_b")
 
     eqs.add(coeffs[0] * n_a + coeffs[2] * n_b == coeffs[4])
     eqs.add(coeffs[1] * n_a + coeffs[3] * n_b == coeffs[5])

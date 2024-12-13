@@ -18,7 +18,7 @@ def process_data(data=data):
 
 inp = process_data()
 
-def build_and_solve_equation(coeffs):
+def build_and_solve_equations(coeffs):
 
     eqs = z3.Solver()
     n_a, n_b = z3.Ints("n_a n_b")
@@ -37,7 +37,7 @@ def build_and_solve_equation(coeffs):
 def part1(inp):
     ans = 0
     for coeffs in inp:
-        n_a, n_b = build_and_solve_equation(coeffs)
+        n_a, n_b = build_and_solve_equations(coeffs)
         ans += n_a * 3 + n_b 
     return ans
 
@@ -46,7 +46,7 @@ def part2(inp):
     for coeffs in inp:
         coeffs[4] += 10000000000000
         coeffs[5] += 10000000000000
-        n_a, n_b = build_and_solve_equation(coeffs)
+        n_a, n_b = build_and_solve_equations(coeffs)
         ans += n_a * 3 + n_b 
     return ans  
 

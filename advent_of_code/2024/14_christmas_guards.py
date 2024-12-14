@@ -103,8 +103,7 @@ def part2(inp):
     # plt.xlabel("iteration")
     # plt.ylabel("cluster_inertia")
     # plt.show()
-
-    return np.argmin(inertias)
+    #return np.argmin(inertias)
 
 start = time.time()
 

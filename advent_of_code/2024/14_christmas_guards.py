@@ -55,7 +55,7 @@ def print_grid(coordinates, grid_size):
         if 0 <= x < grid_size[0] and 0 <= y < grid_size[1]:
             grid[y][x] = "x"
 
-    for row in reversed(grid):  
+    for row in grid:  
         print(" ".join(row))
     print("\n" + "=" * (grid_size[0] * 2 - 1))  
 

@@ -18,8 +18,8 @@ def process_data(data=data):
 
 inp = process_data()
 # inp = [[2,4]], [[2,-3]]
-width = 101 # 11 # test101
-height = 103 # 7 # test 103
+width = 101 # 11 # test
+height = 103 # 7 # test
 
 
 def move(x, y, vx, vy, N):
@@ -30,8 +30,8 @@ def move(x, y, vx, vy, N):
     return new_x, new_y
 
 def score(pos):
-    x_mid = width // 2  # 50
-    y_mid = height // 2  # 51
+    x_mid = width // 2
+    y_mid = height // 2
 
     ans = [0,0,0,0]
 
@@ -48,7 +48,6 @@ def score(pos):
     return ans
 
 def print_grid(coordinates, grid_size):
-    # Create an empty grid
     grid = [["." for _ in range(grid_size[0])] for _ in range(grid_size[1])]
 
     for x, y in coordinates:

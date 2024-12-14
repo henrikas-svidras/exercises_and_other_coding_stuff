@@ -70,24 +70,42 @@ def part1(inp):
         new_pos.append((new_x, new_y))
     return prod(score(new_pos))
 
+import sklearn.cluster
+import numpy as np
+import warnings
+import matplotlib.pyplot as plt
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+
 def part2(inp):
     pos = inp[0]
     speed = inp[1]
     min_diff = float("inf")
-    for i in range(1000000):
+    inertias = []
+    for i in range(100000):
         new_pos = []
         for n in range(len(pos)):
             x, y = pos[n]
             vx, vy = speed[n]
             new_x, new_y = move(x, y, vx, vy, i)
             new_pos.append((new_x, new_y))
+        ## My initial solution, takes a long time but gives the right answer. 
+        ## Alternatively, just print and see like in my ""faster""" solution
+        # kmeans = sklearn.cluster.KMeans(n_clusters=1)
+        # kmeans.fit(new_pos)
+        # inertias.append(kmeans.inertia_)
         diff = len(new_pos) - len(set(new_pos))
         if diff <= min_diff:
-            print(i)
             min_diff = diff
+            print(i)
             print_grid(new_pos, (width, height))
 
-    return "n/a"
+    # plt.plot(inertias)
+    # plt.xlabel("iteration")
+    # plt.ylabel("cluster_inertia")
+    # plt.show()
+
+    return np.argmin(inertias)
 
 start = time.time()
 

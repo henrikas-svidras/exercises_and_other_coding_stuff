@@ -92,15 +92,6 @@ def push_forward_ud(coord, direction):
         push_forward_ud(coord+direction+1j, direction)
         WAREHOUSE[coord + direction],  WAREHOUSE[coord] = WAREHOUSE[coord], WAREHOUSE[coord + direction]
 
-def print_grid(grid_dict):
-    max_x = int(max(key.imag for key in grid_dict))
-    max_y = int(max(key.real for key in grid_dict))
-    for y in range(max_y +1 ):
-        row = ""
-        for x in range(max_x + 1):
-            row += grid_dict.get(complex(y, x), " ")
-            print(row)
-
 def part2():
     robot_pos = ROBOT_START
     for n, instruction in enumerate(INSTRUCTIONS):

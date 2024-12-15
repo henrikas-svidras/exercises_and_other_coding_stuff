@@ -1,5 +1,6 @@
 ## 15th task of advent of code
 from utils.inputs import get_data_set, get_test_data_set
+from utils.helpers import print_grid
 import time
 
 data = get_data_set(2024,15)
@@ -64,21 +65,9 @@ def check_forward(coord, direction):
 
     return False
 
-def print_grid(grid_dict):
-    max_x = int(max(key.imag for key in grid_dict))
-    max_y = int(max(key.real for key in grid_dict))
-
-    for y in range(max_y +1 ):
-        row = ""
-        for x in range(max_x + 1):
-            row += grid_dict.get(complex(y, x), " ")
-        print(row)
-
 def part1():
-    print_grid(WAREHOUSE)
     robot_pos = ROBOT_START
     for instruction in INSTRUCTIONS:
-        print("MOVE", instruction)
         if check_forward(robot_pos, instruction):
             WAREHOUSE[robot_pos+instruction] = "@"
             WAREHOUSE[robot_pos] = "."

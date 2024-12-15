@@ -62,7 +62,6 @@ WAREHOUSE, INSTRUCTIONS, ROBOT_START = process_data()
 def check_forward_lr(coord, direction):
     if WAREHOUSE[coord+direction]=='#':
         return False
-    
     if WAREHOUSE[coord+direction]=='.' or check_forward_lr(coord+direction, direction):
         WAREHOUSE[coord+direction] = WAREHOUSE[coord]
         return True
@@ -72,10 +71,13 @@ def check_forward_lr(coord, direction):
 def check_forward_ud_availability(coord, direction):
     if WAREHOUSE[coord+direction]=="#":
         return False
+    
     elif WAREHOUSE[coord+direction]==".":
         return True
+    
     elif WAREHOUSE[coord+direction]=="]":
         return check_forward_ud_availability(coord+direction, direction) and check_forward_ud_availability(coord+direction-1j, direction)
+    
     elif WAREHOUSE[coord+direction]=="[":
         return check_forward_ud_availability(coord+direction, direction) and check_forward_ud_availability(coord+direction+1j, direction)
 

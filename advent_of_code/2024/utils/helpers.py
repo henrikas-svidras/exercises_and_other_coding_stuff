@@ -18,4 +18,4 @@ def print_grid(grid_dict):
         row = ""
         for x in range(max_x + 1):
             row += grid_dict.get(complex(y, x), " ")
-            print(row)
+        print(row)

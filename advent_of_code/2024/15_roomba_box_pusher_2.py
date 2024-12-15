@@ -1,5 +1,6 @@
 ## 15th task of advent of code
 from utils.inputs import get_data_set, get_test_data_set
+from utils.helpers import print_grid
 import time
 
 data = get_data_set(2024,15)
@@ -111,4 +112,4 @@ start = time.time()
 
 res1 = part2()
 print(f"Part 2 took: {(time.time() - start):.2f}s")
-print(f"Result of part 1: {res1}")
+print(f"Result of part 2: {res1}")

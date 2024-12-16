@@ -88,10 +88,9 @@ def part12(inp):
                 
             continue
         
-             
+        q.append((next_coord, d, score + 1, path))             
         q.append((next_coord, turn_left(d), score + 1001, path))
         q.append((next_coord, turn_right(d), score + 1001, path))
-        q.append((next_coord, d, score + 1, path))
             
     return best_score, len(best_path)
 

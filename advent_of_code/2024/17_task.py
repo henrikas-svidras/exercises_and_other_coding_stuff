@@ -73,9 +73,23 @@ from tqdm import tqdm
 def part2():
     A, B, C, program = process_data(data)
     target = program.copy()
-    i = A*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2
-    out = part1((i, B, C, program),part1=False)
-    print(i, out, len(out)) 
+    
+    i = A*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2 
+
+    last_print = 0
+    # find period that repeats the first 6 digits
+    # first hit: 
+
+    for i in range(0, i*2*2*2):
+        out = part1((i, B, C, program),part1=False)
+        if out[:6] == program[:6]:
+            print(i - last_print, i, out, len(out)) 
+            last_print = i
+        
+        if out == program:
+            print(i)
+            break
+
 
 start = time.time()
 

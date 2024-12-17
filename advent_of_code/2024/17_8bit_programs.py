@@ -1,3 +1,4 @@
+#17th task of advent of code
 from utils.inputs import get_data_set, get_test_data_set
 import time
 

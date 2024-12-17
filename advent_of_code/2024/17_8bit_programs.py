@@ -82,5 +82,3 @@ start = time.time()
 res2 = part2((A, B, C, programs))
 print(f"Part 2 took: {(time.time() - start):.2f}s")
 print(f"Result of part 2: {res2}")
-
-print(part1((53, 0, 0, programs)))

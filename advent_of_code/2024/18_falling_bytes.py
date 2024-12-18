@@ -52,10 +52,6 @@ def process_data(data, length=12, size=7):
 
 inp = process_data(data, 1024, 71)
 
-turn_left = lambda x: x*1j
-turn_right = lambda x: x*-1j
-
-
 def part1(inp):
     maze, start, end = inp  
     
@@ -74,7 +70,7 @@ def part1(inp):
         
         for d in DIRS_COMPLEX[:4]:
             next_coord = coord + d
-            if next_coord in maze and maze[next_coord] != '#':
+            if next_coord in maze and maze[next_coord] != '#' and not next_coord in seen_states:
                 q.append((dist + 1, next_coord))
     
     return None

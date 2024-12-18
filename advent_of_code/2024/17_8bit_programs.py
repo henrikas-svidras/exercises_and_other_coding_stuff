@@ -60,7 +60,7 @@ def part2(inp):
 
     found = [0]
     
-    for length in range(len(programs)):
+    for length in range(len(program)):
         to_check = found.copy()
         
         found = []

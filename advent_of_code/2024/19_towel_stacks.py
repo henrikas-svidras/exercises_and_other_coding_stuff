@@ -15,6 +15,17 @@ def process_data(data):
 
 TOWELS, PATTERNS = process_data(data)
 
+# part 1 solution that works faster
+# @lru_cache
+# def is_stackable_p1(pattern, shift=0):        
+#     if shift == len(pattern):
+#         return True
+    
+#     for towel in TOWELS:
+#         if pattern[shift:shift+len(towel)] == towel:
+#             if is_stackable_p1(pattern, shift + len(towel)):
+#                 return True
+
 @lru_cache
 def is_stackable(pattern, shift=0):
     if shift >= len(pattern):
@@ -25,12 +36,12 @@ def is_stackable(pattern, shift=0):
             res += is_stackable(pattern, shift + len(towel))
     return res
 
-
 def part1():
     ans = 0
     for pattern in PATTERNS:
         if is_stackable(pattern):
             ans += 1
+
     return ans
     
 

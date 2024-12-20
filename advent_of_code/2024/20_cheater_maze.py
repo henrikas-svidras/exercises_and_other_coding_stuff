@@ -20,7 +20,7 @@ def process_data(data):
 inp = process_data(data)
 
 
-def bfs_shortest_path(grid, start, end):
+def get_shortest_path(grid, start, end):
     visited = {}
     queue = [start]
     step_count = 0
@@ -82,12 +82,12 @@ def cheat_endpoints(coord, track):
 
 def part1(inp):
     grid, start, end = inp
-    path_visited = bfs_shortest_path(grid, start, end)
+    path_visited = get_shortest_path(grid, start, end)
     return count_cheats(path_visited)
 
 def part2(inp):
     grid, start, end = inp
-    path_visited = bfs_shortest_path(grid, start, end)
+    path_visited = get_shortest_path(grid, start, end)
     return count_big_cheats(path_visited)
 
 

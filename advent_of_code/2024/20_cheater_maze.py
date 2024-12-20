@@ -61,10 +61,10 @@ def count_cheats(visited):
 
 def count_big_cheats(visited):
     jump_count = 0
-    for coords in visited:
-        potential_endpoints = cheat_endpoints(coords, visited)
-        for other_coords in potential_endpoints:
-            if visited[other_coords] - (visited[coords] + taxicab(coords, other_coords)) > 99:
+    for coord in visited:
+        potential_endpoints = cheat_endpoints(coord, visited)
+        for other_coord in potential_endpoints:
+            if visited[other_coord] - (visited[coord] + taxicab(coord, other_coord)) > 99:
                 jump_count += 1
     return jump_count
 

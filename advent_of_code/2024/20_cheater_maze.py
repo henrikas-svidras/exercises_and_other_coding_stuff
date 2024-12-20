@@ -69,7 +69,7 @@ def count_big_cheats(visited):
     return jump_count
 
 def cheat_endpoints(coord, track):
-    # can also solve part 2, if replace 20 --> 2
+    # can also solve part 1, if replace 20 --> 2
     potential_coords = set()
     for di in range(-20, 21):
         dj_max = 20 - abs(di)

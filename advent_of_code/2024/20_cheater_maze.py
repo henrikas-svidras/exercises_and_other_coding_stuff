@@ -36,7 +36,7 @@ def bfs_shortest_path(grid, start, end):
         for d in DIRS_COMPLEX[:4]:
             next_coord = coord + d
 
-            if next_coord not in visited and grid[next_coord] in 'SE.':
+            if next_coord not in visited and grid[next_coord] != '#':
                 visited[next_coord] = step_count
                 queue.append(next_coord)
 

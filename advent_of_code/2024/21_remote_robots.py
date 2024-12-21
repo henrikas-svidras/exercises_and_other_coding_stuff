@@ -63,6 +63,7 @@ def get_all_shortest_paths_directions(start, end, empty):
         for label, d in DIRECTIONS.items():
             next_coord = coord + d
 
+            # jump over empty spaces in POSITIONS & POS CONTROL, this is better than passing the grids
             if next_coord == empty:
                 continue
 

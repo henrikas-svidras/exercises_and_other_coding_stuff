@@ -4,7 +4,6 @@ from utils.inputs import get_data_set, get_test_data_set
 
 import time
 from functools import lru_cache
-from collections import deque
 
 codes = get_data_set(2024, 21)
 # codes = ["029A"]
@@ -45,13 +44,13 @@ DIRECTIONS = {
 
 def get_all_shortest_paths_directions(start, end, empty):
 
-    queue = deque([(start, [])])
+    queue = [(start, [])]
     visited = {start: 0}  
     shortest_paths = []  
     shortest_length = float("inf") 
 
     while queue:
-        coord, path = queue.popleft()
+        coord, path = queue.pop(0)
 
         if len(path) > shortest_length:
             continue

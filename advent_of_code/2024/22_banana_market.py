@@ -42,12 +42,12 @@ def evolve(snum):
 
 
 def part12(inp, its = 2000):
-    diffs = deque() 
     counter = Counter()
     res = 0
     for num in inp:
         prev = num % 10
         seqs = defaultdict(lambda:None)
+        diffs = deque() 
         for _ in range(0,its):
             num = evolve(num)
             curr = num % 10

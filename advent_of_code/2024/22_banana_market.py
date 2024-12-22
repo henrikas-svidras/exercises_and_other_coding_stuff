@@ -68,7 +68,6 @@ def part12(inp, its = 2000):
     return res, counter.most_common(1)[0][1]
 
 start_time = time.time()
-inp = process_data(data)
 result = part12(inp)
 print(f"Part 1 took: {time.time() - start_time:.2f}s")
 print(f"Result of part 1&2: {result}")

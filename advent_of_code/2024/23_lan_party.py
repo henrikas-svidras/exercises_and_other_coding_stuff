@@ -1,6 +1,6 @@
 # 23rd task of advent of code 2024
 from utils.inputs import get_data_set, get_test_data_set
-from collections import Counter, deque, defaultdict
+from collections import defaultdict
 
 import time
 
@@ -12,6 +12,7 @@ def process_data(data=data):
         key1, key2 = key.split("-") 
         lans[key1].append(key2)
         lans[key2].append(key1)
+
     return lans
 
 inp = process_data(data)
@@ -27,7 +28,6 @@ def part1(inp):
                   if lan1.startswith("t") or lan2.startswith("t") or lan3.startswith("t"):
                       connected.add(frozenset([lan1, lan2, lan3]))
 
-
     return len(connected)
 
 def part2(inp):
@@ -36,14 +36,13 @@ def part2(inp):
   
   for lan in lans:
     current_cycle = [lan]
-    
+
     for neighbor in lans[lan]:
       if all(neighbor in lans[neighbour2] for neighbour2 in current_cycle):
         current_cycle.append(neighbor)
 
     if len(current_cycle) > len(longest_cycle):
       longest_cycle = current_cycle.copy()
-
 
   return ",".join(sorted(longest_cycle))
 

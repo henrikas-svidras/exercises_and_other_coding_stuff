@@ -55,3 +55,8 @@ start_time = time.time()
 result = part2(inp)
 print(f"Part 2 took: {time.time() - start_time:.2f}s")
 print(f"Result of part 2: {result}")
+
+## Solution with networkx for future reference
+# import networkx as nx
+# G = nx.from_dict_of_lists(inp)
+# print([clique for clique in nx.enumerate_all_cliques(G)][-1])

@@ -18,7 +18,6 @@ inp = process_data(data)
 
 def part1(inp):
     lans = inp
-
     connected = set()
 
     for lan1 in lans:
@@ -33,12 +32,11 @@ def part1(inp):
 
 def part2(inp):
   lans = inp
-
   longest_cycle = []
   
   for lan in lans:
     current_cycle = [lan]
-
+    
     for neighbor in lans[lan]:
       if all(neighbor in lans[neighbour2] for neighbour2 in current_cycle):
         current_cycle.append(neighbor)
@@ -48,9 +46,6 @@ def part2(inp):
 
 
   return ",".join(sorted(longest_cycle))
-
-
-
 
 start_time = time.time()
 result = part1(inp)

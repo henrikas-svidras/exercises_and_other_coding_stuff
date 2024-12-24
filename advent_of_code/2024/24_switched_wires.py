@@ -152,31 +152,31 @@ def part2(inp, p1_result):
                 print("\t\t", end="")
                 print(g111, op11, g211,og11)
 
-## The idea is to manually inspect the output above. Basically most of them should have this pattern:
-## gate1 XOR gate 2 = zXX
-##    gate 3 OR gate 4 = gate 1
-##        gate 6 AND  gate 7 = gate 3
-##        gate 8 AND gate 9 = gate 4
-##    yXX XOR xXX  = gate2
-##
-## or alternatively, if its directly connected to z
-##  xXX XOR yXX = zXX
-##
-## One has to look from deviations from this pattern. 
-## The first output gate, counting from top, is then a gate you need to add to the switch list
-## For example:
-## hnr XOR kdf z24
-##       nsr XOR gsd kdf
-##                dqb OR dhv gsd
-##                y23 XOR x23 nsr
-##        y24 XOR x24 hnr
-## Note that  in the second later there are TWO XOR gates, but as I explain above you need to have only 1.
-## So it means that "nsr XOR gsd kdf" falls out of pattern. So it means that "kdf" will need to be rewired.
-## Note, you should ignore z01 and z45, because they are the first / last so they fall out of pattern by definition.
-## Not sure if all inputs are like that.
+  ## The idea is to manually inspect the output above. Basically most of them should have this pattern:
+  ## gate1 XOR gate 2 = zXX
+  ##    gate 3 OR gate 4 = gate 1
+  ##        gate 6 AND  gate 7 = gate 3
+  ##        gate 8 AND gate 9 = gate 4
+  ##    yXX XOR xXX  = gate2
+  ##
+  ## or alternatively, if its directly connected to z
+  ##  xXX XOR yXX = zXX
+  ##
+  ## One has to look from deviations from this pattern. 
+  ## The first output gate, counting from top, is then a gate you need to add to the switch list
+  ## For example:
+  ## hnr XOR kdf z24
+  ##       nsr XOR gsd kdf
+  ##                dqb OR dhv gsd
+  ##                y23 XOR x23 nsr
+  ##        y24 XOR x24 hnr
+  ## Note that  in the second later there are TWO XOR gates, but as I explain above you need to have only 1.
+  ## So it means that "nsr XOR gsd kdf" falls out of pattern. So it means that "kdf" will need to be rewired.
+  ## Note, you should ignore z01 and z45, because they are the first / last so they fall out of pattern by definition.
+  ## Not sure if all inputs are like that.
 
-switch_list = ["z23","z15","z39","ckj", "dbp","rpp","kdf","fdv"]
-print("".join(sorted(switch_list)))
+  switch_list = ["z23","z15","z39","ckj", "dbp","rpp","kdf","fdv"]
+  print(",".join(sorted(switch_list)))
 
 inp = process_data(data)
 

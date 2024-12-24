@@ -124,33 +124,35 @@ def part2(inp, p1_result):
   bin_target = bin(target)
   bin_target2 = bin(p1_result)
 
+  bad_bits = set()
   for n, (bit1, bit2) in enumerate(zip(bin_target[::-1], bin_target2[::-1])):
-    # print(bit1, bit2)
     if bit1!=bit2:
-      print(n, bit1, bit2)
+      bad_bits.add(f"{n:02}")
+
+  def parse_and_print(indent, g1, g2, depth=0):
+
+      if depth > 2:
+        return
+      for val in data:
+          if ":" in val or val == "":
+              continue
+
+          g11, op1, g21, _, og1 = val.split(" ")
+
+          if g1 == og1 or g2 == og1:
+              print(indent, g11, op1, g21, og1)
+
+              parse_and_print(indent + "\t", g11, g21, depth+1)
 
   for val in data:
       if ":" in val or val == "":
-         continue
-      g1, op, g2, _,og = val.split(" ")
-      if og.startswith("z"):
+          continue
 
-        print(g1, op, g2,og)
-        for val in data:
-          if ":" in val or val == "":
-            continue
-          g11, op1, g21, _,og1 = val.split(" ")
-          if g1 == og1 or g2 == og1:
-            print("\t", end="")
-            print(g11, op1, g21,og1)
-
-            for val in data:
-              if ":" in val or val == "":
-                continue
-              g111, op11, g211, _,og11 = val.split(" ")
-              if g11 == og11 or g21 == og11:
-                print("\t\t", end="")
-                print(g111, op11, g211,og11)
+      g1, op, g2, _, og = val.split(" ")
+      if og[-2:] in bad_bits:
+        if og.startswith("z"):
+            print(g1, op, g2, og)
+            parse_and_print("\t", g1, g2)
 
   ## The idea is to manually inspect the output above. Basically most of them should have this pattern:
   ## gate1 XOR gate 2 = zXX
@@ -158,8 +160,10 @@ def part2(inp, p1_result):
   ##        gate 6 AND  gate 7 = gate 3
   ##        gate 8 AND gate 9 = gate 4
   ##    yXX XOR xXX  = gate2
+  ## This is a pattern of a FULL ADDER. https://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder
+  ## We need a full adder because we are ADDING X and Y. 
   ##
-  ## or alternatively, if its directly connected to z
+  ## Alternatively, if its directly connected to z, we can have this, because the earlier inputs are 0
   ##  xXX XOR yXX = zXX
   ##
   ## One has to look from deviations from this pattern. 
@@ -175,15 +179,16 @@ def part2(inp, p1_result):
   ## Note, you should ignore z01 and z45, because they are the first / last so they fall out of pattern by definition.
   ## Not sure if all inputs are like that.
 
+  print("Mismatched bits", sorted(bad_bits))
+  # From Manual inspection of above output:
   switch_list = ["z23","z15","z39","ckj", "dbp","rpp","kdf","fdv"]
-  print(",".join(sorted(switch_list)))
+  return ",".join(sorted(switch_list))
 
 inp = process_data(data)
 
 start_time = time.time()
 result = part1(inp)
 print(f"Part 1 took: {time.time() - start_time:.2f}s")
-print(f"Result of part 1: {result}")
 
 inp = process_data(data)
 start_time = time.time()

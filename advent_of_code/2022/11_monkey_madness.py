@@ -105,18 +105,9 @@ def part1(inp, rounds = 10000):
     max_vals = sorted(vals)
     return max_vals[-1]*max_vals[-2]
 
-def part2(inp):
-
-
-    return 0
-
         
 start = time.time()
 
 res1 = part1(process_data())
 print(f"Part 1 took: {(time.time() - start):.2f}s")
 print(f"Result of part 1: {res1} ")
-
-res2 = part2(process_data())
-print(f"Part 2 took: {(time.time() - start):.2f}s")
-print(f"Result of part 2: {res2}")

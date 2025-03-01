@@ -22,7 +22,6 @@ def get_data_set(year, day, raw=False):
         import urllib.request
 
         session_cookie = os.getenv("SESSION_COOKIE")
-
         url = f'https://adventofcode.com/{year}/day/{day}/input'
         print(f"Downloading from {url}...")
         a_request = urllib.request.Request(url)

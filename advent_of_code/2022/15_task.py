@@ -44,12 +44,62 @@ def part1(data, target=2000000):
 
     return ans
 
+def merge_intervals(ints):
+    ints.sort()  
+    out = [list(ints[0])]
+    for a, b in ints[1:]:
+        if a <= out[-1][1] + 1:      
+            out[-1][1] = max(out[-1][1], b)
+        else:
+            out.append([a, b])
+    return out
+
 def part2(data):
 
+    sensor_dists = {}
+
+    for sensor, beacon in data.items():
+        dist = taxicab_distance(sensor, beacon)
+        sensor_dists[sensor] = dist
 
 
+    x_lo, x_hi = (0,4000000)
+    y_lo, y_hi = (0,4000000)
 
-    return 
+    for y in range(y_lo, y_hi + 1):
+        ranges = []
+
+        for sensor, dist_to_beacon in sensor_dists.items():
+            dist_to_this_y = abs(y - sensor[1])
+            if dist_to_this_y > dist_to_beacon:
+            #if passes means beacon is crossing this y
+                continue
+            w =  dist_to_beacon - dist_to_this_y # by how much crosses
+            L = sensor[0] - w # the amount in y direction is also in x direction
+            R = sensor[0] + w
+            if R < x_lo or L > x_hi:
+                continue
+            ranges.append([max(L, x_lo), min(R, x_hi)])
+
+
+        merged = merge_intervals(ranges)
+
+        #edges
+        if merged[0][0] > x_lo:
+            return x_lo * 4_000_000 + y
+    
+
+        if merged[0][1] < x_hi:
+            x = merged[0][1] + 1
+            return x * 4_000_000 + y
+
+        # gap between ranges
+        for L, R in merged[1:]:
+            if L > merged[0][1] + 1:
+                x = merged[0][1] + 1
+                return x * 4_000_000 + y
+            merged[0][1] = max(merged[0][1], R)
+
 
 preprocessed_input = process_data(data)
 
@@ -67,33 +117,3 @@ res2 = part2(preprocessed_input)
 print(f"Part 2 took: {(time.time() - start):.2f}s")
 print(f"Result of part 2: {res2} ")
 
-
-def part1_intervals(data, target):
-    intervals = []
-    beacons_on_row = set()
-    for (sx, sy), (bx, by) in data.items():
-        d = abs(sx - bx) + abs(sy - by)
-        dy = abs(sy - target)
-        if dy <= d:
-            r = d - dy
-            intervals.append((sx - r, sx + r))
-        if by == target:
-            beacons_on_row.add((bx, by))
-
-    intervals.sort()
-    merged = []
-    for lo, hi in intervals:
-        if not merged or lo > merged[-1][1] + 1:
-            merged.append([lo, hi])
-        else:
-            merged[-1][1] = max(merged[-1][1], hi)
-
-    covered = sum(hi - lo + 1 for lo, hi in merged)
-    for (bx, _) in beacons_on_row:
-        for lo, hi in merged:
-            if lo <= bx <= hi:
-                covered -= 1
-                break
-    return covered
-
-part1_intervals(preprocessed_input, 2_000_000)

@@ -31,6 +31,9 @@ function get_test_data(year::Int, day::Int; raw::Bool=false)
 
         # Select out test data
         parts = split(r_body, "For example")
+        if length(parts)==1
+            parts = split(r_body, "larger example")
+        end
         result_part = parts[2]
 
         m = match(r"<pre><code>(.*?)</code></pre>"s, result_part)
@@ -87,7 +90,7 @@ function fetch_data(year::Int, day::Int; test::Bool=true, raw::Bool=false)
     path = get_input_paths(day, test=test)
 
     if !raw
-        lines = [chomp(line) for line in eachline(path)]
+        lines = [String(chomp(line)) for line in eachline(path)]
         return lines
     else
         content = read(path, String)

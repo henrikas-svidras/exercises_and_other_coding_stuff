@@ -18,10 +18,6 @@ end
 
 neighbors = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)]
 
-function in_bounds(p)
-
-end
-
 function part1(cubes::Vector{Tuple{Int,Int,Int}})::Int
     S = Vector{Tuple{Int,Int,Int}}(cubes)
     area = 0

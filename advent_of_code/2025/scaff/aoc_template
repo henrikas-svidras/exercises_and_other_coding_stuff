@@ -1,0 +1,14 @@
+#!/bin/bash
+
+YEAR="$1"
+DAY="$2"
+PADDED_DAY=$(printf "%02d" "$DAY")
+
+TARGET_FILE="day${PADDED_DAY}.jl"
+
+sed \
+  -e "s/{YEAR}/${YEAR}/g" \
+  -e "s/{DAY}/${DAY}/g" \
+  scaff/.aoc_template.jl > "$TARGET_FILE"
+
+echo "Created $TARGET_FILE"

@@ -143,7 +143,9 @@ function work(blueprint::Blueprint, inventory::Inventory, robots::Robots, n::Int
 
     results = Int[inv_after.geode]
 
-    # THIRD OPTIMISATION: ALWAYS GO FOR GEO (Greedy but for works because obsidian is used only for Geo. That means not building just loses Geo). At least in my head seems logical, but idk
+    # THIRD OPTIMISATION: ALWAYS GO FOR GEO 
+    # (Greedy but for works because obsidian is used only for Geo. That means not building just loses Geo). 
+    # At least in my head seems logical, but idk
     if can_geo
         r2 = Robots(robots.ore, robots.clay, robots.obsidian, robots.geode + 1)
         i2 = Inventory(

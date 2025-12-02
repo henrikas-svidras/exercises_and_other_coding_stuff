@@ -46,6 +46,7 @@ function part12(data)
     invalid_ids_p2 = []
 
     for (a, b) in data
+        print(a, b)
         for val = a:b
             if is_invalid_id(val)
                 push!(invalid_ids, val)

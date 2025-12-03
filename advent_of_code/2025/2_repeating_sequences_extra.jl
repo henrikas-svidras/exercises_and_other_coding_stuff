@@ -41,6 +41,7 @@ function part12(ranges)
 
     min_n = ndigits(low)
     max_n = ndigits(right)
+    println(min_n, max_n)
 
     for n = min_n:max_n
         for m = 1:(div(n, 2))

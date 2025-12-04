@@ -20,7 +20,7 @@ function drop_lowest(num_list)
             break
         end
     end
-
+    
     return vcat(num_list[1:(idx-1)], num_list[(idx+1):end])
 end
 

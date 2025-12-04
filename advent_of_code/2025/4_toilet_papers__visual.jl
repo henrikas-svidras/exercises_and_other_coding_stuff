@@ -91,7 +91,7 @@ end
 
 
 
-function animate_papers(input; filename = "visuals/4.gif", fps = 2)
+function animate_papers(input; filename = "visuals/4.gif", fps = 20)
     frames, removed_step, total_removed = evolve_frames_for_part2(input)
 
     anim = @animate for (i, grid) in enumerate(frames)

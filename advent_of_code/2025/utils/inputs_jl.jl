@@ -25,11 +25,9 @@ function get_test_data(year::Int, day::Int; raw::Bool=false)
 
 
         url = "https://adventofcode.com/$year/day/$day"
-        # Make request
         r = HTTP.request("GET", url, headers=headers)
         r_body = String(r.body)
 
-        # Select out test data
         parts = split(r_body, "For example")
         if length(parts)==1
             parts = split(r_body, "larger example")
@@ -45,8 +43,6 @@ function get_test_data(year::Int, day::Int; raw::Bool=false)
         end
 
         decoded = Gumbo.parsehtml(result).root[2][1].text
-
-        #Save into file
 
         open(path, "w") do f
             write(f, decoded)
@@ -68,14 +64,14 @@ function get_data(year::Int, day::Int; raw::Bool=false)
     else
         session_cookie = ENV["SESSION_COOKIE"]
         url = "https://adventofcode.com/$year/day/$day/input"
-
+        
         headers = [
             "Cookie" => "session=$(session_cookie)"
         ]
         r = HTTP.request("GET", url, headers=headers)
-        r_body = String(r.body)
-        decoded = Gumbo.parsehtml(r_body).root[2][1].text
-
+        decoded = String(r.body)
+        println(decoded)
+        
         open(path, "w") do f
             write(f, decoded)
         end

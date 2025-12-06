@@ -70,7 +70,6 @@ function get_data(year::Int, day::Int; raw::Bool=false)
         ]
         r = HTTP.request("GET", url, headers=headers)
         decoded = String(r.body)
-        println(decoded)
         
         open(path, "w") do f
             write(f, decoded)

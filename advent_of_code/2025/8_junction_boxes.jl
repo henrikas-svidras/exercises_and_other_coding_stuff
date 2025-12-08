@@ -10,7 +10,6 @@ function parse_data(lines)
     pts = NTuple{3,Int}[]
     for line in lines
         line = strip(line)
-        isempty(line) && continue
         xyz = parse.(Int, split(line, ","))
         push!(pts, (xyz[1], xyz[2], xyz[3]))
     end
